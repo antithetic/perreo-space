@@ -32,6 +32,9 @@ importers:
       astro:
         specifier: ^6.4.3
         version: 6.4.3(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.61.0)
+      fluid-tailwindcss:
+        specifier: ^1.1.5
+        version: 1.1.5(tailwindcss@4.3.0)
       tailwindcss:
         specifier: ^4.3.0
         version: 4.3.0
@@ -948,6 +951,11 @@ packages:
   flattie@1.1.1:
     resolution: {integrity: sha512-9UbaD6XdAL97+k/n+N7JwX46K/M6Zc6KcFYskrYL8wbBV/Uyk0CTAMY0VT+qiK5PM7AIc9aTWYtq65U7T+aCNQ==}
     engines: {node: '>=8'}
+
+  fluid-tailwindcss@1.1.5:
+    resolution: {integrity: sha512-Hw9qC1NXCesC5rkueo1JwgZSjC6DQBsapLkm7qrdsB8GWdYtGBu62Npng3JyorvGGefVrgoU1e1RoVRyu6ypTw==}
+    peerDependencies:
+      tailwindcss: ^4.0.0
 
   fontace@0.4.1:
     resolution: {integrity: sha512-lDMvbAzSnHmbYMTEld5qdtvNH2/pWpICOqpean9IgC7vUbUJc3k+k5Dokp85CegamqQpFbXf0rAVkbzpyTA8aw==}
@@ -2512,6 +2520,10 @@ snapshots:
       picomatch: 4.0.4
 
   flattie@1.1.1: {}
+
+  fluid-tailwindcss@1.1.5(tailwindcss@4.3.0):
+    dependencies:
+      tailwindcss: 4.3.0
 
   fontace@0.4.1:
     dependencies:
