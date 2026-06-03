@@ -1,0 +1,12 @@
+{
+  "name": "perreo-space",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build"
+  },
+  "packageManager": "pnpm@11.5.1",
+  "devDependencies": {
+    "turbo": "^2.9.16"
+  }
+}
