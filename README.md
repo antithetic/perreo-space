@@ -4,31 +4,38 @@ This repository is a monorepo that uses the [Turbo](https://turbo.build/) build 
 
 ## Project Structure
 
-```
+```text
 /
 ├── apps/
-│   └── web/               # Astro project (see below for details)
-├── .turbo/                # Turbo build system config
-├── node_modules/
-├── package.json
-└── pnpm-workspace.yaml    # Defines the monorepo workspace for pnpm
+│   └── web/                 # Astro project (main app)
+├── .turbo/                  # Turbo build system config directory
+├── node_modules/            # Installed dependencies
+├── package.json             # Root package configuration
+└── pnpm-workspace.yaml      # Monorepo workspace definition for pnpm
 ```
+
+/_If you have more apps/packages, add them under `apps/` or a `packages/` folder._/
 
 ### [`apps/web/`](./apps/web)
 
-This folder contains the main Astro app. See below for [Astro-specific project info](#astro-starter-kit-minimal).
+This folder contains the main Astro app.
 
 #### Development
 
 1. Navigate to the `apps/web` directory:
+
    ```sh
    cd apps/web
    ```
+
 2. Install dependencies from the root:
+
    ```sh
    pnpm install
    ```
+
 3. Start the development server:
+
    ```sh
    pnpm dev
    ```
@@ -61,7 +68,5 @@ _Note: All scripts should be run from the monorepo root unless otherwise specifi
 ---
 
 See [`apps/web/README.md`](./apps/web/README.md) for further details about the Astro project.
-
-For Turbo team settings, see [`.turbo/config.json`](./.turbo/config.json).
 
 ---
