@@ -4,5 +4,6 @@ packages:
 allowBuilds:
   esbuild: true
   sharp: true
+  simple-git-hooks: true
 minimumReleaseAgeExclude:
   - astro@6.4.3
