@@ -3,13 +3,29 @@ import Layout from '@layouts/Layout.astro'
 ---
 
 <Layout>
-  <h1>Love Hangover</h1>
+  <div class="lh-container">
+    <h1>Love Hangover</h1>
+    <p>Queer. Punk. Acid. Sweat.</p>
+  </div>
 </Layout>
 
 <style>
   @reference '@styles/global.css';
 
-  body {
-    @apply bg-red-200;
+  h1 {
+    @apply fl-text-5xl/9xl font-bold;
+    @apply underline decoration-3 underline-offset-3;
+    font-family: 'schwarzkopf-new', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  p {
+    @apply fl-text-[1rem/2rem] font-bold font-mono;
+  }
+
+  .lh-container {
+    @apply mx-auto text-center flex flex-col items-center justify-center h-screen;
+    max-width: 800px;
   }
 </style>
