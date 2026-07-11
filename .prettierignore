@@ -10,6 +10,8 @@ build
 .out
 .next
 .vercel
+.astro
+.turbo
 
 # Ignore logs
 *.log
