@@ -4,9 +4,12 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix",
-    "format": "prettier --write ."
+    
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "packageManager": "pnpm@11.5.1",
   "devDependencies": {
