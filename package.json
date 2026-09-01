@@ -3,7 +3,11 @@
   "private": true,
   "scripts": {
     "dev": "turbo dev",
+    "dev:frontend": "turbo dev --filter=frontend",
+    "dev:studio": "turbo dev --filter=studio",
+
     "build": "turbo build",
+    
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",
     "format": "prettier --write .",
