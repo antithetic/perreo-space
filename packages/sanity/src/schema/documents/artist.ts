@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 
-export default defineType({
+export const artist = defineType({
   name: 'artist',
   title: 'Artist',
   type: 'document',
@@ -16,6 +16,7 @@ export default defineType({
       description:
         'Optional: The date to start/end highlighting this person on the homepage / artist index.',
       options: { columns: 2 },
+      hidden: ({ document }) => !document?.featured,
     },
   ],
   fields: [
@@ -100,18 +101,20 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
-      name: 'featuredStartDate',
-      title: 'Featured Start Date',
+      name: 'featureStartDate',
+      title: 'Feature Start Date',
       type: 'date',
       group: 'profile',
       fieldset: 'featuredArtistOptions',
+      hidden: ({ parent }) => !parent?.featured,
     }),
     defineField({
-      name: 'feasturedEndDate',
-      title: 'Featured End Date',
+      name: 'featureEndDate',
+      title: 'Feature End Date',
       type: 'date',
       group: 'profile',
       fieldset: 'featuredArtistOptions',
+      hidden: ({ parent }) => !parent?.featured,
     }),
   ],
 
