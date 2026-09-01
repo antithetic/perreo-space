@@ -1,0 +1,10 @@
+{
+  "name": "@repo/sanity",
+  "private": true,
+  "scripts": {
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  }
+}
