@@ -1,1 +1,3 @@
-export const documentSchemaTypes = []
+import artist from './artist'
+
+export const documentSchemaTypes = [artist]
