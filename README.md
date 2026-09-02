@@ -1,72 +1,86 @@
-# Monorepo Workspace
+# perreo.space
 
-This repository is a monorepo that uses the [Turbo](https://turbo.build/) build system and contains multiple apps and packages. The primary app described here is an Astro site located in [`apps/web`](./apps/web).
+Monorepo for [Love Hangover](https://perreo.space): an Astro frontend and a Sanity Studio, sharing a content schema package. Managed with [pnpm](https://pnpm.io/) workspaces and [Turborepo](https://turbo.build/).
 
-## Project Structure
+## Project structure
 
 ```text
 /
 ├── apps/
-│   └── web/                 # Astro project (main app)
-├── .turbo/                  # Turbo build system config directory
-├── node_modules/            # Installed dependencies
-├── package.json             # Root package configuration
-└── pnpm-workspace.yaml      # Monorepo workspace definition for pnpm
+│   ├── frontend/            # Astro site (https://perreo.space)
+│   └── studio/              # Sanity Studio
+├── packages/
+│   └── sanity/              # Shared Sanity config + schema (@repo/sanity)
+├── package.json
+├── pnpm-workspace.yaml
+└── turbo.json
 ```
 
-/_If you have more apps/packages, add them under `apps/` or a `packages/` folder._/
+### [`apps/frontend`](./apps/frontend)
 
-### [`apps/web/`](./apps/web)
+Public Astro 7 site with Tailwind CSS 4. Currently a placeholder homepage (`Love Hangover` / `Queer. Punk. Acid. Sweat.`). Not yet wired to Sanity.
 
-This folder contains the main Astro app.
+- Site URL: `https://perreo.space`
+- Dev server: `http://localhost:4321`
 
-#### Development
+### [`apps/studio`](./apps/studio)
 
-1. Navigate to the `apps/web` directory:
+Sanity Studio app. It re-exports the shared config from `@repo/sanity` (`sanity.config.ts` is a one-liner).
 
-   ```sh
-   cd apps/web
-   ```
+- Dev server: `http://localhost:3333`
+- Project: `e7t10841` / dataset `production`
 
-2. Install dependencies from the root:
+### [`packages/sanity`](./packages/sanity) (`@repo/sanity`)
 
-   ```sh
-   pnpm install
-   ```
+Shared Studio configuration and content model. Document types:
 
-3. Start the development server:
+| Type     | Purpose                                      |
+| -------- | -------------------------------------------- |
+| `artist` | People (DJ, producer, resident, etc.)        |
+| `event`  | In-person or virtual events                  |
+| `venue`  | Physical venues referenced by events         |
+| `series` | Recurring series that events can belong to   |
 
-   ```sh
-   pnpm dev
-   ```
+Object and block schema folders exist but are empty. Studio structure (`src/structure`) is also a stub.
 
-#### VSCode Setup
+## Getting started
 
-- Recommended extension: `astro-build.astro-vscode` (see `.vscode/extensions.json`)
-- Launch config in `.vscode/launch.json` allows you to easily run the Astro dev server.
+Requires Node `>=22.12` (frontend) and pnpm `11.5.1`.
 
-#### Scripts
+```sh
+pnpm install
+pnpm dev
+```
 
-_Note: All scripts should be run from the monorepo root unless otherwise specified._
+`pnpm dev` starts every app via Turbo. To run one at a time:
 
-| Command             | Description                      |
-| ------------------- | -------------------------------- |
-| `pnpm install`      | Install all dependencies         |
-| `pnpm dev -F web`   | Run dev server for the Astro app |
-| `pnpm build -F web` | Build the Astro app              |
+```sh
+pnpm dev:frontend    # Astro
+pnpm dev:studio      # Sanity Studio
+```
 
-#### Environment
+## Scripts
 
-- Environment variables for Astro should be placed in `.env` or `.env.production` within `apps/web/`.
-- These files are git-ignored.
+Run from the repo root.
 
-#### Misc
+| Command              | Description                          |
+| -------------------- | ------------------------------------ |
+| `pnpm install`       | Install workspace dependencies       |
+| `pnpm dev`           | Dev servers for all apps             |
+| `pnpm dev:frontend`  | Astro only (`localhost:4321`)        |
+| `pnpm dev:studio`    | Sanity Studio only (`localhost:3333`) |
+| `pnpm build`         | Build all apps                       |
+| `pnpm lint`          | Lint with oxlint                     |
+| `pnpm lint:fix`      | Auto-fix oxlint issues               |
+| `pnpm format`        | Format with Prettier                 |
+| `pnpm format:check`  | Check Prettier formatting            |
 
-- `node_modules`, build output `dist/`, debug logs, and system-specific folders/files are git-ignored (see `.gitignore` in `apps/web/`).
-- JetBrains and VSCode settings are pre-configured in the `.idea/` and `.vscode/` directories.
+## Tooling
 
----
+- **Package manager:** pnpm 11
+- **Build orchestration:** Turborepo 2
+- **Lint / format:** oxlint, Prettier (with `prettier-plugin-astro`)
+- **Frontend:** Astro 7, Tailwind 4, fluid-tailwindcss, Adobe Fonts (Typekit)
+- **CMS:** Sanity 6, schema in `@repo/sanity`
 
-See [`apps/web/README.md`](./apps/web/README.md) for further details about the Astro project.
-
----
+Environment files (`.env`, `.env*`) are git-ignored. Put app-specific secrets next to the app that needs them.
