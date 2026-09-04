@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity'
+import { MapPin } from 'lucide-react'
 
 export const venue = defineType({
   name: 'venue',
   title: 'Venue',
   type: 'document',
+  icon: MapPin,
   fieldsets: [
     {
       name: 'location',
