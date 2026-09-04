@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity'
+import { CircleUser } from 'lucide-react'
 
 export const artist = defineType({
   name: 'artist',
   title: 'Artist',
   type: 'document',
+  icon: CircleUser,
   groups: [
     { name: 'profile', title: 'Profile', default: true },
     { name: 'links', title: 'Links & media' },

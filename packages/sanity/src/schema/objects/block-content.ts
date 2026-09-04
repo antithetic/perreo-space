@@ -12,16 +12,20 @@ import { defineArrayMember, defineType, defineField } from 'sanity'
  *
  * Learn more: https://www.sanity.io/docs/block-content
  */
-export const blockContentBlock = defineType({
+export const blockContent = defineType({
   title: 'Block Content',
   name: 'blockContent',
   type: 'array',
   of: [
     defineArrayMember({
       type: 'block',
-      marks: {
-        annotations: [],
-      },
+      styles: [
+        { title: 'Normal', value: 'normal' },
+        { title: 'Heading 2', value: 'h2' },
+        { title: 'Heading 3', value: 'h3' },
+        { title: 'Heading 4', value: 'h4' },
+        { title: 'Quote', value: 'blockquote' },
+      ],
     }),
     defineArrayMember({
       type: 'image',
